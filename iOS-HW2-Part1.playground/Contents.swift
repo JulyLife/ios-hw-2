@@ -30,10 +30,30 @@ import UIKit
  #
  اكثر من 40 -> سمنة مفرطه
 */
+var height = 156.0
+var Weight = 44.6
+var BMI =  2345.0
 
-
-
-
+func numbers(h: Double , w: Double) -> Double{
+    let result = h/w
+    if result <= 18.5{
+        print("ضعيف")
+    }
+    else if h <= 30.0 && w >= 18.5{
+        print("وزن طبيعي")
+    }
+    else if result > 30.1 && result < 40.0{
+        print("سمنة خفيفه")
+    }
+    else if h > 40 {
+    print("سمنة مفرطه")
+    
+        
+    }
+    return result
+    
+}
+numbers(h: 44.6, w: 156.3 )
 
 //: # 2️⃣  السؤال الثاني
 
@@ -51,4 +71,16 @@ import UIKit
   #
  و اذا كان فوق ١٨ سوف يتم طباعة نص بأن المتقدم يُسمح له بإمتلاك رخصة قيادة
 */
-
+func license(name: String  , age: Int){
+    if age == 18{
+        print("يسمح له بقياده \(name)")
+    }
+    else if age < 18{
+        print("لا يسمح له بقياده \(name)")
+    }
+    else if age > 18{
+        print("يقود \(name)")
+    }
+    
+}
+license(name: "ghanima", age: 15)
