@@ -89,6 +89,38 @@ var wild_Draw = UIImage(named: "Wild_Draw.png")
 
 // struct ...
 
+struct Card{
+    var color: String?
+    var number: Int?
+    var action: String?
+    
+    func imageName() -> String{
+        if(action != nil){
+            return "\(color ?? "Blue")_\(action ?? "Draw").png"
+        }
+        else{
+             return "\(color ?? "Blue")_\(number ?? 0).png"
+        }
+    }
+   
+}
+//Green: 0 -> 9
+//Red: 0 -> 9
+//Blue: 0 -> 9
+//Yellow: 0 -> 9
+var cards = [Card]()
+var colors = ["Green","Red","Blue","Yellow"]
+
+for num in 0...9{
+    for c in colors{
+         cards.append(Card(color: c, number: num))
+    }
+}
+//
+//for card  in cards{
+//    print(card.imageName())
+//}
+
 
 
 
@@ -96,10 +128,29 @@ var wild_Draw = UIImage(named: "Wild_Draw.png")
 // لا تقم بإزالة الملاحظات إلا عند وصولك للمطلوب الثالث
 
 //
-//let randomCard = cards.randomElement()!
-//let randomCardImage = UIImage(named: randomCard.imageName())
-//
-//
-//let cardImages = cards.map{UIImage(named: $0.imageName())}
-//randomCardImage
-//cardImages
+let randomCard = cards.randomElement()!
+let randomCardImage = UIImage(named: randomCard.imageName())
+
+
+let cardImages = cards.map{UIImage(named: $0.imageName())}
+randomCardImage
+cardImages
+
+var Deck = [Card]()
+var action_cards = ["Draw","Reverse","Skip"]
+for c in cards{
+    for action in action_cards{
+        Deck.append(Card(color: c.color, action: action))
+        Deck.append(Card(color: c.color, action: action))
+    }
+    Deck.append(c)
+    
+    if(c.number != 0){
+        Deck.append(c)
+    }
+    
+    
+}
+for d  in Deck{
+    print(d.imageName())
+}
